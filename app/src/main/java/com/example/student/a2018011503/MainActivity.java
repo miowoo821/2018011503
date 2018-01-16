@@ -1,6 +1,8 @@
 package com.example.student.a2018011503;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +29,16 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sp = getSharedPreferences("mydata", MODE_PRIVATE);
         String str = sp.getString("data1", "");
         TextView tv = (TextView) findViewById(R.id.textView);
+        tv.setText(str);
+    }
+    public void setting(View v){
+        Intent it=new Intent(MainActivity.this,SettingsActivity.class);
+        startActivity(it);
+    }
+    public void readsetting(View v){
+        SharedPreferences sp= PreferenceManager.getDefaultSharedPreferences(MainActivity.this);//抓預設的settingActivity
+        String str=sp.getString("example_text","");//第一個參數SharedPreferences
+        TextView tv=(TextView)findViewById(R.id.textView);
         tv.setText(str);
     }
 }
